@@ -6,6 +6,7 @@ import 'package:image_picker/image_picker.dart';
 import 'package:permission_handler/permission_handler.dart';
 import 'package:flutter/services.dart';
 import 'utility.dart';
+import "package:listtextfield/listtextfield.dart";
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
@@ -40,7 +41,11 @@ class EditProfile extends StatefulWidget {
 class _EditProfileState extends State<EditProfile> {
   TextEditingController name = TextEditingController();
   TextEditingController post = TextEditingController();
+  TextEditingController phone = TextEditingController();
+  TextEditingController email = TextEditingController();
+  TextEditingController address = TextEditingController();
   TextEditingController intro = TextEditingController();
+  final _controller = ListTextEditingController(',');
   bool permissionGranted = true;
 
   Future _getStoragePermission() async {
@@ -57,7 +62,8 @@ class _EditProfileState extends State<EditProfile> {
     }
   }
 
-  openImage(context) async {
+  String? paths;
+  openImage() async {
     if (permissionGranted) {
       final XFile? pickedFile =
           await ImagePicker().pickImage(source: ImageSource.gallery);
@@ -74,21 +80,7 @@ class _EditProfileState extends State<EditProfile> {
           var path = '$duplicateFilePath/${generateRandomStringId(10)}.png';
           // Step 4:save the file to a application  directory.
           pickedFile.saveTo(path);
-          Navigator.push(
-              context,
-              MaterialPageRoute(
-                builder: (context) => PdfPreviewPage(
-                    name: "Vicky",
-                    path: path,
-                    expList: expList,
-                    expertise: expertise,
-                    education: education,
-                    language: language),
-              ));
-
-          // setState(() {
-
-          // });
+          paths = path;
         }
       }
     } else {
@@ -138,13 +130,13 @@ class _EditProfileState extends State<EditProfile> {
     return Scaffold(
       body: SafeArea(
         child: Container(
-          padding: const EdgeInsets.only(right: 30, left: 30),
+          margin: const EdgeInsets.only(right: 30, left: 30),
           child: Stack(
             children: [
               Container(
-                padding: const EdgeInsets.only(top: 10),
+                margin: const EdgeInsets.only(top: 10),
                 child: IconButton(
-                    onPressed: () => openImage(context),
+                    onPressed: () => openImage(),
                     icon: const Icon(
                       Icons.camera_alt,
                       size: 24,
@@ -152,7 +144,7 @@ class _EditProfileState extends State<EditProfile> {
                     )),
               ),
               Container(
-                  margin: const EdgeInsets.only(top: 60),
+                  margin: const EdgeInsets.only(top: 130),
                   width: 342,
                   child: TextFormField(
                     decoration: decoration(
@@ -161,7 +153,34 @@ class _EditProfileState extends State<EditProfile> {
                     keyboardType: TextInputType.name,
                   )),
               Container(
-                  margin: const EdgeInsets.only(top: 120),
+                  margin: const EdgeInsets.only(top: 190),
+                  width: 342,
+                  child: TextFormField(
+                    decoration: decoration(
+                        hintText: 'Enter your Email', string: email.text),
+                    controller: email,
+                    keyboardType: TextInputType.emailAddress,
+                  )),
+              Container(
+                  margin: const EdgeInsets.only(top: 250),
+                  width: 342,
+                  child: TextFormField(
+                    decoration: decoration(
+                        hintText: 'Enter your Phone No.', string: phone.text),
+                    controller: phone,
+                    keyboardType: TextInputType.phone,
+                  )),
+              Container(
+                  margin: const EdgeInsets.only(top: 320),
+                  width: 342,
+                  child: TextFormField(
+                    decoration: decoration(
+                        hintText: 'Enter your Address', string: address.text),
+                    controller: address,
+                    keyboardType: TextInputType.streetAddress,
+                  )),
+              Container(
+                  margin: const EdgeInsets.only(top: 390),
                   width: 342,
                   child: TextFormField(
                     decoration: decoration(
@@ -170,7 +189,7 @@ class _EditProfileState extends State<EditProfile> {
                     keyboardType: TextInputType.name,
                   )),
               Container(
-                  margin: const EdgeInsets.only(top: 180),
+                  margin: const EdgeInsets.only(top: 460),
                   width: 342,
                   child: TextFormField(
                     minLines: 1,
@@ -180,6 +199,43 @@ class _EditProfileState extends State<EditProfile> {
                     controller: intro,
                     keyboardType: TextInputType.multiline,
                   )),
+              Container(
+                margin: const EdgeInsets.only(top: 520),
+                child: ListTextField(
+                    controller: _controller,
+                    itemBuilder: (ctx, item) {
+                      // Build how items in the list should appear
+                      return Chip(
+                        label: const Text("value"),
+                        onDeleted: () => _controller.removeItem("value"),
+                      );
+                    }),
+              ),
+              Container(
+                margin: const EdgeInsets.only(top: 600),
+                height: 30,
+                width: 342,
+                child: ElevatedButton(
+                    onPressed: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => PdfPreviewPage(
+                                name: name.text,
+                                email: email.text,
+                                phone: phone.text,
+                                address: address.text,
+                                intro: intro.text,
+                                post: post.text,
+                                path: paths!,
+                                expList: expList,
+                                expertise: expertise,
+                                education: education,
+                                language: language),
+                          ));
+                    },
+                    child: const Text("Save")),
+              )
             ],
           ),
         ),

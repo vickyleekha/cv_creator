@@ -9,6 +9,7 @@ class PdfPreviewPage extends StatelessWidget {
   final List<String> expertise;
   final List<List<String>> education;
   final List<String> language;
+  final String email, phone, address, intro, post;
   const PdfPreviewPage(
       {super.key,
       required this.name,
@@ -16,7 +17,12 @@ class PdfPreviewPage extends StatelessWidget {
       required this.expList,
       required this.expertise,
       required this.education,
-      required this.language});
+      required this.language,
+      required this.email,
+      required this.phone,
+      required this.address,
+      required this.intro,
+      required this.post});
 
   @override
   Widget build(BuildContext context) {
@@ -28,8 +34,8 @@ class PdfPreviewPage extends StatelessWidget {
         pdfFileName: "$name.pdf",
         canChangeOrientation: false,
         canDebug: false,
-        build: (context) =>
-            makePdf(name, path, expList, expertise, education, language),
+        build: (context) => makePdf(name, email, phone, address, intro, post,
+            path, expList, expertise, education, language),
       ),
     );
   }

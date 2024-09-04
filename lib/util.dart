@@ -10,7 +10,12 @@ import 'pdf_utility.dart';
 
 Future<Uint8List> makePdf(
     String name,
-    String path,
+    email,
+    phone,
+    address,
+    intro,
+    post,
+    path,
     List<List<String>> expList,
     List<String> expertise,
     List<List<String>> education,
@@ -49,21 +54,19 @@ Future<Uint8List> makePdf(
                 top: 20,
               ),
               child: Text('Phone', style: whiteTextStyle20())),
-          Text('9560860806', style: whiteTextStyle16()),
+          Text(phone, style: whiteTextStyle16()),
           Container(
               margin: const EdgeInsets.only(
                 top: 20,
               ),
               child: Text('Email', style: whiteTextStyle20())),
-          Text('Vickyleekha2@gmail.com', style: whiteTextStyle16()),
+          Text(email, style: whiteTextStyle16()),
           Container(
               margin: const EdgeInsets.only(
                 top: 20,
               ),
-              child: Text('Address',
-                  style:
-                      const TextStyle(color: PdfColors.white, fontSize: 20))),
-          Text('123 Anywhere st. Any City', style: whiteTextStyle16()),
+              child: Text('Address', style: whiteTextStyle20())),
+          Text(address, style: whiteTextStyle16()),
           Container(
               margin: const EdgeInsets.only(top: 20),
               child: Text('Education', style: whiteTextStyle20())),
@@ -138,7 +141,7 @@ Future<Uint8List> makePdf(
                   fontSize: 32))),
       Container(
           margin: const EdgeInsets.only(top: 5, left: 20),
-          child: Text('Flutter devoloper',
+          child: Text(post,
               style: TextStyle(
                   fontWeight: FontWeight.bold,
                   color: PdfColor.fromHex("#30394A"),
@@ -146,9 +149,7 @@ Future<Uint8List> makePdf(
       Container(
         width: 500,
         margin: const EdgeInsets.only(top: 5, left: 20),
-        child: Text(
-            "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam pharetra in lorem at laoreet. Donec hendrerit libero eget est tempor, quis tempus arcu elementum. In elementum elit at dui tristique feugiat. Mauris convallis, mi at mattis malesuada, neque nulla volutpat dolor, hendrerit faucibus eros nibh ut nunc.",
-            style: greyTextStyle14()),
+        child: Text(intro, style: greyTextStyle14()),
       ),
       Container(
           margin: const EdgeInsets.only(top: 10, left: 20),
