@@ -1,12 +1,12 @@
 import 'dart:convert';
 import 'dart:io';
 
+import 'package:cv_creator/app/data/model/employee_model.dart';
+import 'package:cv_creator/utils/pdf_utility.dart';
 import 'package:flutter/services.dart';
 
 import 'package:pdf/pdf.dart';
 import 'package:pdf/widgets.dart';
-
-import 'pdf_utility.dart';
 
 Future<Uint8List> makePdf(
     String name,
@@ -16,7 +16,7 @@ Future<Uint8List> makePdf(
     intro,
     post,
     path,
-    List<List<String>> expList,
+    final List<ExperienceModel> expList,
     List<String> expertise,
     List<List<String>> education,
     List<String> language) async {
@@ -164,10 +164,11 @@ Future<Uint8List> makePdf(
                 return Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Text(expList[i][0], style: blueTextStyle16()),
-                      Text(expList[i][1], style: greyTextStyle14()),
-                      Text(expList[i][2], style: blueTextStyle16()),
-                      Text(expList[i][3], style: greyTextStyle14())
+                      Text(expList[i].year!, style: blueTextStyle16()),
+                      Text(expList[i].companyName!, style: greyTextStyle14()),
+                      Text(expList[i].jobPosition!, style: blueTextStyle16()),
+                      Text(expList[i].experienceDetails!,
+                          style: greyTextStyle14())
                     ]);
               },
               itemCount: expList.length)),

@@ -50,6 +50,25 @@ decoration({focusNode, hintText, required String string}) => InputDecoration(
     //The label will float when the input is focused
     floatingLabelBehavior: FloatingLabelBehavior.auto);
 
+boxDec() => const BoxDecoration(
+    border: Border(
+        left: BorderSide(
+          width: 3,
+          color: Colors.red,
+        ),
+        right: BorderSide(
+          width: 3,
+          color: Colors.red,
+        ),
+        top: BorderSide(
+          width: 3,
+          color: Colors.red,
+        ),
+        bottom: BorderSide(
+          width: 3,
+          color: Colors.red,
+        )));
+
 Widget buildLoading() => const Center(
     heightFactor: 50,
     widthFactor: 50,

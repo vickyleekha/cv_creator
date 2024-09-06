@@ -1,15 +1,14 @@
-import 'package:cv_creator/util.dart';
+import 'package:cv_creator/app/data/model/employee_model.dart';
+import 'package:cv_creator/make_pdf.dart';
 import 'package:flutter/material.dart';
 import 'package:printing/printing.dart';
 
 class PdfPreviewPage extends StatelessWidget {
-  final String name;
-  final String path;
-  final List<List<String>> expList;
+  final List<ExperienceModel> expList;
   final List<String> expertise;
   final List<List<String>> education;
   final List<String> language;
-  final String email, phone, address, intro, post;
+  final String name, path, email, phone, address, intro, post;
   const PdfPreviewPage(
       {super.key,
       required this.name,
@@ -34,6 +33,7 @@ class PdfPreviewPage extends StatelessWidget {
         pdfFileName: "$name.pdf",
         canChangeOrientation: false,
         canDebug: false,
+        canChangePageFormat: false,
         build: (context) => makePdf(name, email, phone, address, intro, post,
             path, expList, expertise, education, language),
       ),
