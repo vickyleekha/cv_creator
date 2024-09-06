@@ -1,4 +1,4 @@
-import 'package:cv_creator/app/data/model/employee_model.dart';
+import 'package:cv_creator/app/data/model/experience_model.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 

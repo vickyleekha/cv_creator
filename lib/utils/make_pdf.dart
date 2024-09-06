@@ -1,7 +1,7 @@
 import 'dart:convert';
 import 'dart:io';
 
-import 'package:cv_creator/app/data/model/employee_model.dart';
+import 'package:cv_creator/app/data/model/experience_model.dart';
 import 'package:cv_creator/utils/pdf_utility.dart';
 import 'package:flutter/services.dart';
 

@@ -1,5 +1,5 @@
-import 'package:cv_creator/app/data/model/employee_model.dart';
-import 'package:cv_creator/make_pdf.dart';
+import 'package:cv_creator/app/data/model/experience_model.dart';
+import 'package:cv_creator/utils/make_pdf.dart';
 import 'package:flutter/material.dart';
 import 'package:printing/printing.dart';
 

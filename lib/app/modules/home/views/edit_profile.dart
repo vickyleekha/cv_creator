@@ -1,6 +1,6 @@
 import 'dart:io';
-import 'package:cv_creator/app/data/model/employee_model.dart';
-import 'package:cv_creator/pdf_preview_page.dart';
+import 'package:cv_creator/app/data/model/experience_model.dart';
+import 'package:cv_creator/app/modules/home/views/pdf_preview_page.dart';
 import 'package:cv_creator/utils/utility.dart';
 import 'package:cv_creator/utils/utill.dart';
 import 'package:flutter/material.dart';
