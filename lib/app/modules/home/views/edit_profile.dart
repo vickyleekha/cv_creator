@@ -74,35 +74,36 @@ class _EditProfileState extends State<EditProfile> {
     super.initState();
   }
 
-  var expList = [
-    [
-      '2019 - 2022',
-      'Company Name l 123 Anywhere St., Any City',
-      'Job position here',
-      'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam pharetra in lorem at laoreet. Donec hendrerit libero eget est tempor, quis tempus arcu elementum. In elementum elit at dui tristique feugiat. Mauris convallis, mi at mattis malesuada, neque nulla volutpat dolor, hendrerit faucibus eros nibh ut nunc. Proin luctus urna id nunc sagittis dignissim. Sed in libero sed libero dictum dapibus. Vivamus fermentum est eget lorem aliquet, vel tempus metus dignissim. Donec risus arcu, tristique et sollicitudin blandit, iaculis ut nisl. Integer rutrum ultricies fringilla.'
-    ],
-    [
-      '2019 - 2022',
-      'Company Name l 123 Anywhere St., Any City',
-      'Job position here',
-      'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam pharetra in lorem at laoreet. Donec hendrerit libero eget est tempor, quis tempus arcu elementum. In elementum elit at dui tristique feugiat. Mauris convallis, mi at mattis malesuada, neque nulla volutpat dolor, hendrerit faucibus eros nibh ut nunc. Proin luctus urna id nunc sagittis dignissim. Sed in libero sed libero dictum dapibus. Vivamus fermentum est eget lorem aliquet, vel tempus metus dignissim. Donec risus arcu, tristique et sollicitudin blandit, iaculis ut nisl. Integer rutrum ultricies fringilla.'
-    ],
-    [
-      '2019 - 2022',
-      'Company Name l 123 Anywhere St., Any City',
-      'Job position here',
-      'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam pharetra in lorem at laoreet. Donec hendrerit libero eget est tempor, quis tempus arcu elementum. In elementum elit at dui tristique feugiat. Mauris convallis, mi at mattis malesuada, neque nulla volutpat dolor, hendrerit faucibus eros nibh ut nunc. Proin luctus urna id nunc sagittis dignissim. Sed in libero sed libero dictum dapibus. Vivamus fermentum est eget lorem aliquet, vel tempus metus dignissim. Donec risus arcu, tristique et sollicitudin blandit, iaculis ut nisl. Integer rutrum ultricies fringilla.'
-    ]
+  var expertise = [
+    'Android',
+    'IOS',
+    'Flutter',
+    'dart',
   ];
-
-  var expertise = ['Android', 'IOS', 'Flutter', 'dart'];
 
   var education = [
     ['2010', 'MCA', 'IGNOU'],
     ['2008', 'BCA', 'IGNOU']
   ];
 
-  var language = ['English', 'Hindi', 'Punjabi'];
+  var language = [
+    'English',
+    'Hindi',
+    'Punjabi',
+    'spanish',
+    'English',
+    'Hindi',
+    'Punjabi',
+    'spanish',
+    'English',
+    'Hindi',
+    'Punjabi',
+    'spanish',
+    'English',
+    'Hindi',
+    'Punjabi',
+    'spanish'
+  ];
   @override
   Widget build(BuildContext context) {
     return Scaffold(

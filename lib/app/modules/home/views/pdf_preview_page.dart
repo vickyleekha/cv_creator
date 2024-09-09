@@ -34,8 +34,14 @@ class PdfPreviewPage extends StatelessWidget {
         canChangeOrientation: false,
         canDebug: false,
         canChangePageFormat: false,
-        build: (context) => makePdf(name, email, phone, address, intro, post,
-            path, expList, expertise, education, language),
+        actionBarTheme: const PdfActionBarTheme(
+            backgroundColor: Color.fromRGBO(244, 67, 54, 1)),
+        // pdfPreviewPageDecoration: BoxDecoration(
+        //     gradient: LinearGradient(
+        //         colors: [Colors.black, Colors.white],
+        // begin: Alignment.topLeft)),
+        build: (context) => makePdf("name", "email", "phone", "address",
+            "intro", "post", path, expList, expertise, education, language),
       ),
     );
   }
