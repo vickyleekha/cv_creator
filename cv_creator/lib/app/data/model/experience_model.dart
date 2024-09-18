@@ -1,5 +1,3 @@
-import 'package:flutter/material.dart';
-
 class ExperienceModel {
   final String? year;
   final String? companyName;
@@ -7,9 +5,9 @@ class ExperienceModel {
   final String? experienceDetails;
 
   ExperienceModel({
-    @required this.year,
-    @required this.companyName,
-    @required this.jobPosition,
-    @required this.experienceDetails,
+    required this.year,
+    required this.companyName,
+    required this.jobPosition,
+    required this.experienceDetails,
   });
 }

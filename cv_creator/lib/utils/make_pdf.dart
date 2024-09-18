@@ -1,6 +1,7 @@
 import 'dart:convert';
 import 'dart:io';
 
+import 'package:cv_creator/app/data/model/education_model.dart';
 import 'package:cv_creator/app/data/model/experience_model.dart';
 import 'package:cv_creator/utils/pdf_utility.dart';
 import 'package:flutter/services.dart';
@@ -17,7 +18,7 @@ Future<Uint8List> makePdf(
     path,
     final List<ExperienceModel> expList,
     List<String> expertise,
-    List<List<String>> education,
+    List<EducationModel> education,
     List<String> language) async {
   // converting file to unit8list
   List<int> imageBase64 = File(path).readAsBytesSync();

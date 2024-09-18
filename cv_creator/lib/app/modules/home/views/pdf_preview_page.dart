@@ -1,3 +1,4 @@
+import 'package:cv_creator/app/data/model/education_model.dart';
 import 'package:cv_creator/app/data/model/experience_model.dart';
 import 'package:cv_creator/utils/make_pdf.dart';
 import 'package:flutter/material.dart';
@@ -6,7 +7,7 @@ import 'package:printing/printing.dart';
 class PdfPreviewPage extends StatelessWidget {
   final List<ExperienceModel> expList;
   final List<String> expertise;
-  final List<List<String>> education;
+  final List<EducationModel> education;
   final List<String> language;
   final String name, path, email, phone, address, intro, post;
   const PdfPreviewPage(

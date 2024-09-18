@@ -1,5 +1,6 @@
 import 'package:cv_creator/app/modules/home/views/common_view.dart';
 import 'package:cv_creator/app/modules/home/views/edit_profile.dart';
+import 'package:cv_creator/app/modules/home/views/education_view.dart';
 import 'package:get/get.dart';
 import '../modules/home/bindings/home_binding.dart';
 import '../modules/home/views/experience_view.dart';
@@ -20,6 +21,11 @@ class AppPages {
     GetPage(
       name: _Paths.COM,
       page: () => const CommonView(),
+      binding: HomeBinding(),
+    ),
+    GetPage(
+      name: _Paths.EDU,
+      page: () => const EducationView(),
       binding: HomeBinding(),
     ),
     GetPage(

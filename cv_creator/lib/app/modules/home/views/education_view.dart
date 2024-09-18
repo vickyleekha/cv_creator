@@ -1,18 +1,16 @@
+import 'package:cv_creator/app/modules/home/controllers/education_controller.dart';
 import 'package:cv_creator/app/modules/home/views/edit_profile.dart';
 import 'package:cv_creator/utils/utill.dart';
 import 'package:flutter/material.dart';
-
 import 'package:get/get.dart';
 
-import '../controllers/experience_controller.dart';
-
-class ExperienceView extends GetView<ExperienceController> {
-  const ExperienceView({super.key});
+class EducationView extends GetView<EducationController> {
+  const EducationView({super.key});
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Experience Details'),
+        title: const Text('Education Details'),
         centerTitle: true,
       ),
       body: Padding(
@@ -29,39 +27,30 @@ class ExperienceView extends GetView<ExperienceController> {
               height: 8,
             ),
             TextField(
-              controller: controller.compTextEditingController,
+              controller: controller.orgTextEditingController,
               decoration: decoration(
-                  hintText: "Company Name",
-                  string: controller.compTextEditingController.text),
+                  hintText: "Org Name",
+                  string: controller.orgTextEditingController.text),
             ),
             const SizedBox(
               height: 8,
             ),
             TextField(
-              controller: controller.poitionTextEditingController,
+              controller: controller.courseTextEditingController,
               decoration: decoration(
-                  hintText: "Job Postion",
-                  string: controller.poitionTextEditingController.text),
-            ),
-            const SizedBox(
-              height: 8,
-            ),
-            TextField(
-              controller: controller.expTextEditingController,
-              decoration: decoration(
-                  hintText: "Experience Details",
-                  string: controller.expTextEditingController.text),
+                  hintText: "Course",
+                  string: controller.courseTextEditingController.text),
             ),
             const SizedBox(
               height: 8,
             ),
             ElevatedButton(
               onPressed: () {
-                controller.addEmployee(
-                    controller.yearTextEditingController.text,
-                    controller.compTextEditingController.text,
-                    controller.poitionTextEditingController.text,
-                    controller.expTextEditingController.text);
+                controller.addEDucation(
+                  controller.yearTextEditingController.text,
+                  controller.orgTextEditingController.text,
+                  controller.courseTextEditingController.text,
+                );
               },
               child: const Text("Add Employee"),
             ),
@@ -70,9 +59,9 @@ class ExperienceView extends GetView<ExperienceController> {
                     itemCount: controller.itemCount.value,
                     itemBuilder: ((context, index) {
                       return ListTile(
-                        title: Text(controller.experience.value[index].year!),
-                        subtitle: Text(controller
-                            .experience.value[index].experienceDetails!),
+                        title: Text(controller.education.value[index].year!),
+                        subtitle:
+                            Text(controller.education.value[index].orgName!),
                         trailing: GestureDetector(
                           child: const Icon(
                             Icons.delete,
@@ -88,7 +77,7 @@ class ExperienceView extends GetView<ExperienceController> {
             ),
             ElevatedButton(
                 onPressed: () {
-                  Get.to(EditProfile(expList: controller.experience.value));
+                  Get.to(EditProfile(eduList: controller.education.value));
                 },
                 child: const Text("edit"))
           ],

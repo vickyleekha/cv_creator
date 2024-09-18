@@ -1,5 +1,6 @@
 import 'package:cv_creator/app/modules/home/controllers/comon_controllor.dart';
 import 'package:cv_creator/app/modules/home/views/edit_profile.dart';
+import 'package:cv_creator/utils/utill.dart';
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
@@ -21,27 +22,20 @@ class CommonView extends GetView<CommonController> {
           children: [
             TextField(
               controller: controller.textEditingController,
-              decoration: InputDecoration(
-                hintText: "$data",
-                labelText: "$data",
-                border: const OutlineInputBorder(
-                  borderRadius: BorderRadius.all(
-                    Radius.circular(8),
-                  ),
-                ),
-                isDense: true,
-              ),
+              decoration: decoration(
+                  hintText: "$data",
+                  string: controller.textEditingController.text),
             ),
             const SizedBox(
               height: 8,
             ),
             ElevatedButton(
               onPressed: () {
-                controller.addEmployee(
+                controller.addCommon(
                   controller.textEditingController.text,
                 );
               },
-              child: const Text("Add Employee"),
+              child: Text("Add $data"),
             ),
             Expanded(
               child: Obx(() => ListView.builder(

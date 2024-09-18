@@ -9,6 +9,7 @@ abstract class Routes {
   static const HOME = _Paths.HOME;
   static const EditProfile = _Paths.EDIT;
   static const CommonView = _Paths.COM;
+  static const EducationView = _Paths.EDU;
 }
 
 abstract class _Paths {
@@ -17,4 +18,5 @@ abstract class _Paths {
   static const HOME = '/home';
   static const EDIT = '/Edit';
   static const COM = '/common';
+  static const EDU = '/education';
 }

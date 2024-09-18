@@ -1,4 +1,5 @@
 import 'dart:io';
+import 'package:cv_creator/app/data/model/education_model.dart';
 import 'package:cv_creator/app/data/model/experience_model.dart';
 import 'package:cv_creator/app/modules/home/views/pdf_preview_page.dart';
 import 'package:cv_creator/utils/grey_resume.dart';
@@ -18,7 +19,8 @@ import 'package:printing/printing.dart';
 class EditProfile extends StatefulWidget {
   final List<ExperienceModel>? expList;
   final List<String>? comList;
-  const EditProfile({super.key, this.expList, this.comList});
+  final List<EducationModel>? eduList;
+  const EditProfile({super.key, this.expList, this.comList, this.eduList});
 
   @override
   State<EditProfile> createState() => _EditProfileState();
@@ -81,13 +83,6 @@ class _EditProfileState extends State<EditProfile> {
     }
     super.initState();
   }
-
-  var education = [
-    ['2010', 'MCA', 'IGNOU'],
-    ['2008', 'BCA', 'IGNOU'],
-    ['2010', 'MCA', 'IGNOU'],
-    ['2008', 'BCA', 'IGNOU']
-  ];
 
   @override
   Widget build(BuildContext context) {
@@ -171,7 +166,7 @@ class _EditProfileState extends State<EditProfile> {
                 child: Container(
                   margin: const EdgeInsets.only(top: 20),
                   child: const Text(
-                    " Add Exp",
+                    " Experience",
                     style: TextStyle(
                       // fontFamily: AppTheme.fontName,
                       color: Color.fromRGBO(103, 167, 237, 1),
@@ -217,6 +212,24 @@ class _EditProfileState extends State<EditProfile> {
                   ),
                 ),
               ),
+              GestureDetector(
+                onTap: () {
+                  Get.toNamed('/education');
+                  // sh
+                },
+                child: Container(
+                  margin: const EdgeInsets.only(left: 100, top: 50),
+                  child: const Text(
+                    "Education",
+                    style: TextStyle(
+                      // fontFamily: AppTheme.fontName,
+                      color: Color.fromRGBO(103, 167, 237, 1),
+                      fontSize: 14,
+                      fontWeight: FontWeight.w600,
+                    ),
+                  ),
+                ),
+              ),
               Container(
                 margin: const EdgeInsets.only(top: 570),
                 height: 30,
@@ -234,7 +247,7 @@ class _EditProfileState extends State<EditProfile> {
                             path: paths!,
                             expList: widget.expList!,
                             expertise: widget.comList!,
-                            education: education,
+                            education: widget.eduList!,
                             language: widget.comList!),
                       );
                     },
@@ -246,28 +259,14 @@ class _EditProfileState extends State<EditProfile> {
                 width: MediaQuery.of(context).size.width,
                 child: ElevatedButton(
                     onPressed: () {
+
+                      List<String> res = ['assets/download.jpg','assets/res.png','assets/small.png','assets/grey.jpg'];
                       Get.to(Scaffold(
                           appBar: AppBar(
-                            title: const Text('PDF Preview'),
+                            title: const Text('Template View'),
                           ),
-                          body: PdfPreview(
-                              onError: (cont, error) {
-                                return Text(error.toString());
-                              },
-                              pdfFileName: "name.pdf",
-                              canChangeOrientation: false,
-                              canDebug: false,
-                              canChangePageFormat: false,
-                              // pdfPreviewPageDecoration: BoxDecoration(
-                              //   color: Colors.red[100],
-                              // ),
-                              actionBarTheme: const PdfActionBarTheme(
-                                  backgroundColor:
-                                      Color.fromRGBO(244, 67, 54, 1)),
-                              build: (context) =>
-                                  // generateCV()
-                                  generateSkillBasedResumePdf()))); // Call the method to generate the PDF
-                    },
+                          body:gridViewImages()));
+                     },
                     child: const Text("new resume")),
               )
             ],

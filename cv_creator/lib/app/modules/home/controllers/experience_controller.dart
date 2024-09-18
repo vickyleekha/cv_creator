@@ -2,7 +2,7 @@ import 'package:cv_creator/app/data/model/experience_model.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 
-class HomeController extends GetxController {
+class ExperienceController extends GetxController {
   Rx<List<ExperienceModel>> experience = Rx<List<ExperienceModel>>([]);
   TextEditingController yearTextEditingController = TextEditingController();
   TextEditingController compTextEditingController = TextEditingController();

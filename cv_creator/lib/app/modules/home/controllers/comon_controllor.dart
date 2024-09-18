@@ -15,7 +15,7 @@ class CommonController extends GetxController {
     textEditingController.dispose();
   }
 
-  addEmployee(String commnon) {
+  addCommon(String commnon) {
     commonList.value.add(commnon);
     itemCount.value = commonList.value.length;
     textEditingController.clear();
