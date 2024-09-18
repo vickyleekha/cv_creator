@@ -6,7 +6,7 @@ Future<Uint8List> generateGreenResumePdf() async {
   final pdf = pw.Document();
 
   final profileImage = await rootBundle.load(
-      'assets/profile_image.jpeg'); // Make sure to add your profile image in assets
+      'assets/profile_image.jpg'); // Make sure to add your profile image in assets
   final Uint8List profileImageData = profileImage.buffer.asUint8List();
 
   pdf.addPage(

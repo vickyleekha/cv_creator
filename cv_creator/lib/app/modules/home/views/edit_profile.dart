@@ -2,19 +2,13 @@ import 'dart:io';
 import 'package:cv_creator/app/data/model/education_model.dart';
 import 'package:cv_creator/app/data/model/experience_model.dart';
 import 'package:cv_creator/app/modules/home/views/pdf_preview_page.dart';
-import 'package:cv_creator/utils/grey_resume.dart';
-import 'package:cv_creator/utils/new_pdf.dart';
-import 'package:cv_creator/utils/pdf_green.dart';
-import 'package:cv_creator/utils/red_heading.dart';
-import 'package:cv_creator/utils/simple_resume.dart';
-import 'package:cv_creator/utils/skill_based.dart';
+import 'package:cv_creator/app/modules/home/views/grid_view.dart';
 import 'package:cv_creator/utils/utility.dart';
 import 'package:cv_creator/utils/utill.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:permission_handler/permission_handler.dart';
-import 'package:printing/printing.dart';
 
 class EditProfile extends StatefulWidget {
   final List<ExperienceModel>? expList;
@@ -259,14 +253,8 @@ class _EditProfileState extends State<EditProfile> {
                 width: MediaQuery.of(context).size.width,
                 child: ElevatedButton(
                     onPressed: () {
-
-                      List<String> res = ['assets/download.jpg','assets/res.png','assets/small.png','assets/grey.jpg'];
-                      Get.to(Scaffold(
-                          appBar: AppBar(
-                            title: const Text('Template View'),
-                          ),
-                          body:gridViewImages()));
-                     },
+                      Get.to(const GridViewM());
+                    },
                     child: const Text("new resume")),
               )
             ],

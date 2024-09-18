@@ -15,7 +15,7 @@ import 'package:pdf/widgets.dart' as pw;
 
 Future<Uint8List> generateCV() async {
   final pdf = pw.Document();
-  final ByteData image = await rootBundle.load('assets/res.png');
+  final ByteData image = await rootBundle.load('assets/profile_image.jpg');
   final ByteData image1 = await rootBundle.load('assets/bgnew.jpg');
 
   Uint8List imageData = (image).buffer.asUint8List();

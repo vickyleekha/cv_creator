@@ -1,6 +1,6 @@
 import 'package:cv_creator/app/data/model/education_model.dart';
 import 'package:cv_creator/app/data/model/experience_model.dart';
-import 'package:cv_creator/utils/make_pdf.dart';
+import 'package:cv_creator/utils/resume/make_pdf.dart';
 import 'package:flutter/material.dart';
 import 'package:printing/printing.dart';
 
