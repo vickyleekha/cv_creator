@@ -5,8 +5,8 @@ import 'package:get/get.dart';
 
 import '../controllers/home_controller.dart';
 
-class HomeView extends GetView<HomeController> {
-  const HomeView({super.key});
+class ExperienceView extends GetView<HomeController> {
+  const ExperienceView({super.key});
   @override
   Widget build(BuildContext context) {
     return Scaffold(

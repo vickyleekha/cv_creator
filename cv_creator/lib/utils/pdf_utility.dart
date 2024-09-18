@@ -14,6 +14,12 @@ bigLine() => Container(
     margin: const EdgeInsets.only(top: 5, bottom: 5),
     decoration: BoxDecoration(color: PdfColor.fromHex("#30394A")));
 
+fullLine(color) => Container(
+    height: 1,
+    width: 500,
+    margin: const EdgeInsets.only(top: 5, bottom: 5),
+    decoration: BoxDecoration(color: color));
+
 greyTextStyle14() => TextStyle(
     color: PdfColor.fromHex("#737373"),
     fontWeight: FontWeight.bold,
@@ -45,6 +51,14 @@ circle4() => Container(
       margin: const EdgeInsets.only(right: 5),
       decoration:
           const BoxDecoration(shape: BoxShape.circle, color: PdfColors.white),
+    );
+
+circleBlack() => Container(
+      height: 8,
+      width: 8,
+      margin: const EdgeInsets.only(right: 5),
+      decoration:
+          const BoxDecoration(shape: BoxShape.circle, color: PdfColors.black),
     );
 
 langContainer(language) => Container(
@@ -107,6 +121,27 @@ imageContainer(image) => Container(
       ),
     );
 
+imageContainerWH(image, width, height) => Container(
+      width: width,
+      height: height,
+      decoration: BoxDecoration(
+        image: DecorationImage(
+          image: image,
+        ),
+        shape: BoxShape.circle,
+      ),
+    );
+
+imageContainerWHBG(image, width, height) => Container(
+      width: width,
+      height: height,
+      decoration: BoxDecoration(
+        image: DecorationImage(
+          image: image,
+        ),
+      ),
+    );
+
 educationContainer(education) => Container(
     margin: const EdgeInsets.only(top: 20),
     child: ListView.builder(
@@ -125,14 +160,14 @@ educationContainer(education) => Container(
               ]);
         }));
 
-MultiLineText({
+multiLineText({
   text,
   textStyle,
   lineColors,
 }) {
   List<String> getLines(String text, TextStyle style, double maxWidth) {
     final textPainter = m.TextPainter(
-      text: m.TextSpan(text: text, style: m.TextStyle()),
+      text: m.TextSpan(text: text, style: const m.TextStyle()),
       textDirection: m.TextDirection.ltr,
       maxLines: null, // Allow unlimited lines
     );
@@ -167,8 +202,6 @@ MultiLineText({
   return LayoutBuilder(
     builder: (context, constraints) {
       double maxWidth = 342;
-
-      print(maxWidth);
 
       // Get the lines of text using the _getLines function
       List<String> lines = getLines(text, textStyle, maxWidth);

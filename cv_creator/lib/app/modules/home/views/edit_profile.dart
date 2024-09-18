@@ -1,16 +1,24 @@
 import 'dart:io';
 import 'package:cv_creator/app/data/model/experience_model.dart';
 import 'package:cv_creator/app/modules/home/views/pdf_preview_page.dart';
+import 'package:cv_creator/utils/grey_resume.dart';
+import 'package:cv_creator/utils/new_pdf.dart';
+import 'package:cv_creator/utils/pdf_green.dart';
+import 'package:cv_creator/utils/red_heading.dart';
+import 'package:cv_creator/utils/simple_resume.dart';
+import 'package:cv_creator/utils/skill_based.dart';
 import 'package:cv_creator/utils/utility.dart';
 import 'package:cv_creator/utils/utill.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:permission_handler/permission_handler.dart';
+import 'package:printing/printing.dart';
 
 class EditProfile extends StatefulWidget {
   final List<ExperienceModel>? expList;
-  const EditProfile({super.key, this.expList});
+  final List<String>? comList;
+  const EditProfile({super.key, this.expList, this.comList});
 
   @override
   State<EditProfile> createState() => _EditProfileState();
@@ -74,13 +82,6 @@ class _EditProfileState extends State<EditProfile> {
     super.initState();
   }
 
-  var expertise = [
-    'Android',
-    'IOS',
-    'Flutter',
-    'dart',
-  ];
-
   var education = [
     ['2010', 'MCA', 'IGNOU'],
     ['2008', 'BCA', 'IGNOU'],
@@ -88,24 +89,6 @@ class _EditProfileState extends State<EditProfile> {
     ['2008', 'BCA', 'IGNOU']
   ];
 
-  var language = [
-    'English',
-    'Hindi',
-    'Punjabi',
-    'spanish',
-    'English',
-    'Hindi',
-    'Punjabi',
-    'spanish',
-    'English',
-    'Hindi',
-    'Punjabi',
-    'spanish',
-    'English',
-    'Hindi',
-    'Punjabi',
-    'spanish'
-  ];
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -115,7 +98,7 @@ class _EditProfileState extends State<EditProfile> {
           child: Stack(
             children: [
               Container(
-                margin: const EdgeInsets.only(top: 30),
+                margin: const EdgeInsets.only(top: 90),
                 child: IconButton(
                     onPressed: () => openImage(),
                     icon: const Icon(
@@ -126,7 +109,7 @@ class _EditProfileState extends State<EditProfile> {
               ),
               Container(
                   margin: const EdgeInsets.only(top: 130),
-                  width: 342,
+                  width: MediaQuery.of(context).size.width,
                   child: TextFormField(
                     decoration: decoration(
                         hintText: 'Enter your name', string: name.text),
@@ -135,7 +118,7 @@ class _EditProfileState extends State<EditProfile> {
                   )),
               Container(
                   margin: const EdgeInsets.only(top: 190),
-                  width: 342,
+                  width: MediaQuery.of(context).size.width,
                   child: TextFormField(
                     decoration: decoration(
                         hintText: 'Enter your Email', string: email.text),
@@ -144,7 +127,7 @@ class _EditProfileState extends State<EditProfile> {
                   )),
               Container(
                   margin: const EdgeInsets.only(top: 250),
-                  width: 342,
+                  width: MediaQuery.of(context).size.width,
                   child: TextFormField(
                     decoration: decoration(
                         hintText: 'Enter your Phone No.', string: name.text),
@@ -153,7 +136,7 @@ class _EditProfileState extends State<EditProfile> {
                   )),
               Container(
                   margin: const EdgeInsets.only(top: 320),
-                  width: 342,
+                  width: MediaQuery.of(context).size.width,
                   child: TextFormField(
                     decoration: decoration(
                         hintText: 'Enter your Address', string: address.text),
@@ -162,7 +145,7 @@ class _EditProfileState extends State<EditProfile> {
                   )),
               Container(
                   margin: const EdgeInsets.only(top: 390),
-                  width: 342,
+                  width: MediaQuery.of(context).size.width,
                   child: TextFormField(
                     decoration: decoration(
                         hintText: 'Enter your Position', string: post.text),
@@ -171,7 +154,7 @@ class _EditProfileState extends State<EditProfile> {
                   )),
               Container(
                   margin: const EdgeInsets.only(top: 460),
-                  width: 342,
+                  width: MediaQuery.of(context).size.width,
                   child: TextFormField(
                     minLines: 1,
                     maxLines: 5,
@@ -185,20 +168,59 @@ class _EditProfileState extends State<EditProfile> {
                   Get.toNamed('/home');
                   // sh
                 },
-                child: const Text(
-                  " Add Exp",
-                  style: TextStyle(
-                    // fontFamily: AppTheme.fontName,
-                    color: Color.fromRGBO(103, 167, 237, 1),
-                    fontSize: 14,
-                    fontWeight: FontWeight.w600,
+                child: Container(
+                  margin: const EdgeInsets.only(top: 20),
+                  child: const Text(
+                    " Add Exp",
+                    style: TextStyle(
+                      // fontFamily: AppTheme.fontName,
+                      color: Color.fromRGBO(103, 167, 237, 1),
+                      fontSize: 14,
+                      fontWeight: FontWeight.w600,
+                    ),
+                  ),
+                ),
+              ),
+              GestureDetector(
+                onTap: () {
+                  Get.toNamed('/common', arguments: "Expertise");
+                  // sh
+                },
+                child: Container(
+                  margin: const EdgeInsets.only(left: 100, top: 20),
+                  child: const Text(
+                    "Expertise",
+                    style: TextStyle(
+                      // fontFamily: AppTheme.fontName,
+                      color: Color.fromRGBO(103, 167, 237, 1),
+                      fontSize: 14,
+                      fontWeight: FontWeight.w600,
+                    ),
+                  ),
+                ),
+              ),
+              GestureDetector(
+                onTap: () {
+                  Get.toNamed('/common', arguments: "Language");
+                  // sh
+                },
+                child: Container(
+                  margin: const EdgeInsets.only(left: 20, top: 50),
+                  child: const Text(
+                    "Language",
+                    style: TextStyle(
+                      // fontFamily: AppTheme.fontName,
+                      color: Color.fromRGBO(103, 167, 237, 1),
+                      fontSize: 14,
+                      fontWeight: FontWeight.w600,
+                    ),
                   ),
                 ),
               ),
               Container(
-                margin: const EdgeInsets.only(top: 600),
+                margin: const EdgeInsets.only(top: 570),
                 height: 30,
-                width: 342,
+                width: MediaQuery.of(context).size.width,
                 child: ElevatedButton(
                     onPressed: () {
                       Get.to(
@@ -209,14 +231,44 @@ class _EditProfileState extends State<EditProfile> {
                             address: address.text,
                             intro: intro.text,
                             post: post.text,
-                            // path: paths!,
-                            // expList: widget.expList!,
-                            expertise: expertise,
+                            path: paths!,
+                            expList: widget.expList!,
+                            expertise: widget.comList!,
                             education: education,
-                            language: language),
+                            language: widget.comList!),
                       );
                     },
                     child: const Text("Save")),
+              ),
+              Container(
+                margin: const EdgeInsets.only(top: 630),
+                height: 30,
+                width: MediaQuery.of(context).size.width,
+                child: ElevatedButton(
+                    onPressed: () {
+                      Get.to(Scaffold(
+                          appBar: AppBar(
+                            title: const Text('PDF Preview'),
+                          ),
+                          body: PdfPreview(
+                              onError: (cont, error) {
+                                return Text(error.toString());
+                              },
+                              pdfFileName: "name.pdf",
+                              canChangeOrientation: false,
+                              canDebug: false,
+                              canChangePageFormat: false,
+                              // pdfPreviewPageDecoration: BoxDecoration(
+                              //   color: Colors.red[100],
+                              // ),
+                              actionBarTheme: const PdfActionBarTheme(
+                                  backgroundColor:
+                                      Color.fromRGBO(244, 67, 54, 1)),
+                              build: (context) =>
+                                  // generateCV()
+                                  generateSkillBasedResumePdf()))); // Call the method to generate the PDF
+                    },
+                    child: const Text("new resume")),
               )
             ],
           ),

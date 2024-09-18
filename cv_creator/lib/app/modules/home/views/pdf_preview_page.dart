@@ -4,16 +4,16 @@ import 'package:flutter/material.dart';
 import 'package:printing/printing.dart';
 
 class PdfPreviewPage extends StatelessWidget {
-  // final List<ExperienceModel> expList;
+  final List<ExperienceModel> expList;
   final List<String> expertise;
   final List<List<String>> education;
   final List<String> language;
-  final String name, email, phone, address, intro, post;
+  final String name, path, email, phone, address, intro, post;
   const PdfPreviewPage(
       {super.key,
       required this.name,
-      // required this.path,
-      // required this.expList,
+      required this.path,
+      required this.expList,
       required this.expertise,
       required this.education,
       required this.language,
@@ -31,7 +31,7 @@ class PdfPreviewPage extends StatelessWidget {
       ),
       body: PdfPreview(
         onError: (cont, error) {
-          return Container(child: Text(error.toString()));
+          return Text(error.toString());
         },
         pdfFileName: "$name.pdf",
         canChangeOrientation: false,
@@ -39,24 +39,8 @@ class PdfPreviewPage extends StatelessWidget {
         canChangePageFormat: false,
         actionBarTheme: const PdfActionBarTheme(
             backgroundColor: Color.fromRGBO(244, 67, 54, 1)),
-        // pdfPreviewPageDecoration: BoxDecoration(
-        //     gradient: LinearGradient(
-        //         colors: [Colors.black, Colors.white],
-        // begin: Alignment.topLeft)),
-        build: (context) => makePdf(
-            "name",
-            "email",
-            "phone",
-            "address",
-            "intro",
-            "post"
-            // ,
-
-            // path, expList,
-            ,
-            expertise,
-            education,
-            language),
+        build: (context) => makePdf("name", "email", "phone", "address",
+            "intro", "post", path, expList, expertise, education, language),
       ),
     );
   }

@@ -12,7 +12,7 @@ decoration({focusNode, hintText, required String string}) => InputDecoration(
         // const Color.fromRGBO(224, 255, 250, 1)
         //     :
         const Color.fromRGBO(247, 250, 248, 1),
-    contentPadding: const EdgeInsets.all(8),
+    // contentPadding: const EdgeInsets.fromLTRB(30, 8, 30, 8),
     enabledBorder: OutlineInputBorder(
         borderRadius: BorderRadius.circular(8),
         borderSide: const BorderSide(

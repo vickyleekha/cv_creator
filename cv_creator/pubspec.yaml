@@ -19,6 +19,7 @@ dependencies:
   fluttertoast: ^8.2.4
   get: ^4.6.6
   cupertino_icons: ^1.0.8
+  path_provider: ^2.1.4
 
 dev_dependencies:
   flutter_test:
@@ -32,3 +33,5 @@ dependency_overrides:
 
 flutter:
   uses-material-design: true
+  assets:
+    - assets/

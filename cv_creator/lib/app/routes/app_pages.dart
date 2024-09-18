@@ -1,7 +1,8 @@
+import 'package:cv_creator/app/modules/home/views/common_view.dart';
 import 'package:cv_creator/app/modules/home/views/edit_profile.dart';
 import 'package:get/get.dart';
 import '../modules/home/bindings/home_binding.dart';
-import '../modules/home/views/home_view.dart';
+import '../modules/home/views/experience_view.dart';
 part 'app_routes.dart';
 
 class AppPages {
@@ -13,7 +14,12 @@ class AppPages {
   static final routes = [
     GetPage(
       name: _Paths.HOME,
-      page: () => const HomeView(),
+      page: () => const ExperienceView(),
+      binding: HomeBinding(),
+    ),
+    GetPage(
+      name: _Paths.COM,
+      page: () => const CommonView(),
       binding: HomeBinding(),
     ),
     GetPage(
