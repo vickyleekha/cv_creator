@@ -21,7 +21,7 @@ Future<Uint8List> createPDF() async {
   pdf.addPage(
     pw.Page(
       pageFormat: PdfPageFormat.a4,
-      margin: pw.EdgeInsets.all(20),
+      margin: const pw.EdgeInsets.all(20),
       build: (pw.Context context) {
         return pw.Row(
           crossAxisAlignment: pw.CrossAxisAlignment.start,
@@ -30,7 +30,7 @@ Future<Uint8List> createPDF() async {
             pw.Expanded(
               flex: 1,
               child: pw.Container(
-                padding: pw.EdgeInsets.all(10),
+                padding: const pw.EdgeInsets.all(10),
                 color: PdfColors.grey200,
                 child: pw.Column(
                   crossAxisAlignment: pw.CrossAxisAlignment.start,

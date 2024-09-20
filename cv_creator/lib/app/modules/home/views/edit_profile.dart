@@ -1,7 +1,6 @@
 import 'dart:io';
 import 'package:cv_creator/app/data/model/education_model.dart';
 import 'package:cv_creator/app/data/model/experience_model.dart';
-import 'package:cv_creator/app/modules/home/views/pdf_preview_page.dart';
 import 'package:cv_creator/app/modules/home/views/grid_view.dart';
 import 'package:cv_creator/utils/utility.dart';
 import 'package:cv_creator/utils/utill.dart';
@@ -9,12 +8,12 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:permission_handler/permission_handler.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class EditProfile extends StatefulWidget {
   final List<ExperienceModel>? expList;
-  final List<String>? comList;
   final List<EducationModel>? eduList;
-  const EditProfile({super.key, this.expList, this.comList, this.eduList});
+  const EditProfile({super.key, this.expList, this.eduList});
 
   @override
   State<EditProfile> createState() => _EditProfileState();
@@ -229,34 +228,27 @@ class _EditProfileState extends State<EditProfile> {
                 height: 30,
                 width: MediaQuery.of(context).size.width,
                 child: ElevatedButton(
-                    onPressed: () {
-                      Get.to(
-                        PdfPreviewPage(
-                            name: name.text,
-                            email: email.text,
-                            phone: phone.text,
-                            address: address.text,
-                            intro: intro.text,
-                            post: post.text,
-                            path: paths!,
-                            expList: widget.expList!,
-                            expertise: widget.comList!,
-                            education: widget.eduList!,
-                            language: widget.comList!),
-                      );
+                    onPressed: () async {
+                      // Obtain shared preferences.
+                      final SharedPreferences prefs =
+                          await SharedPreferences.getInstance();
+
+// Save an String value to 'name' key.
+                      await prefs.setString('name', name.text);
+                      await prefs.setString('email', email.text);
+                      await prefs.setString('phone', phone.text);
+                      await prefs.setString('address', address.text);
+                      await prefs.setString('intro', intro.text);
+                      await prefs.setString('post', post.text);
+                      await prefs.setString('path', paths.toString());
+
+                      Get.to(GridViewM(
+                        expList: widget.expList,
+                        eduList: widget.eduList,
+                      ));
                     },
                     child: const Text("Save")),
               ),
-              Container(
-                margin: const EdgeInsets.only(top: 630),
-                height: 30,
-                width: MediaQuery.of(context).size.width,
-                child: ElevatedButton(
-                    onPressed: () {
-                      Get.to(const GridViewM());
-                    },
-                    child: const Text("new resume")),
-              )
             ],
           ),
         ),

@@ -7,19 +7,24 @@ import 'package:cv_creator/utils/pdf_utility.dart';
 import 'package:flutter/services.dart';
 import 'package:pdf/pdf.dart';
 import 'package:pdf/widgets.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 Future<Uint8List> makePdf(
-    String name,
-    email,
-    phone,
-    address,
-    intro,
-    post,
-    path,
-    final List<ExperienceModel> expList,
-    List<String> expertise,
-    List<EducationModel> education,
-    List<String> language) async {
+  List<ExperienceModel>? expList,
+  List<EducationModel>? education,
+) async {
+  String name, email, phone, address, intro, post, path;
+  SharedPreferences preferences = await SharedPreferences.getInstance();
+
+  name = preferences.getString('name')!;
+  email = preferences.getString('email')!;
+  phone = preferences.getString('phone')!;
+  address = preferences.getString('address')!;
+  intro = preferences.getString('intro')!;
+  post = preferences.getString('post')!;
+  path = preferences.getString('path')!;
+  List<String> expertise = preferences.getStringList('expertise')!;
+  List<String> language = preferences.getStringList('language')!;
   // converting file to unit8list
   List<int> imageBase64 = File(path).readAsBytesSync();
   String imageAsString = base64Encode(imageBase64);
